@@ -1,0 +1,34 @@
+{% load static %}
+<header>
+<div class="navbar">
+        <div class="nav-logo">
+            <a href="/"><img class="nav-logo" src="{% static 'images/navlogo.png' %}" alt="logo"></a>
+        </div>
+        <div class="location-search">
+            <form action="" method="get">
+                <input class="location" type="search" name="q" id="" placeholder="Search locality">
+            </form>
+        </div>
+        <div class="product-search">
+            <form action="" method="get">
+                <input class="product" type="search" name="q" id="" placeholder="Find car,property etc...">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
+            </form>
+        </div>
+        <div >
+            <h3 class="language">English</h3>
+        </div>
+        <div>
+            <h4 class="login"><a href="">Login</a></h4>
+        </div>
+        <div class="sell-div">
+            <button class="sell-button">SELL</button>
+        </div>
+            
+    </div> 
+    <div class="border"></div>
+
+    <div class="banner">
+        <img class="banner-image" src="{% static 'images/banner.png' %}" alt="banner">
+    </div>
+</header>
