@@ -191,6 +191,162 @@ h4 a:hover{
   .footerParentDiv .footer p {
     margin: 0;
   }
+  .form-container {
+    height: 35vw;
+    margin: auto;
+    border: 1px solid #333;
+    width: 40%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+.signup-form label {
+    color: #000;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 10rem;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10rem;
+}
+
+.signup-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.signup-form input[type="button"]{
+    font-weight: 500;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Add transition for smooth effect */
+    float: right;
+    margin-right: 10rem;
+}
+.signup-form input[type="button"]:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add this line for the shadow */
+}
+.signup-form a{
+    text-decoration: none;
+    float: left;
+    margin-left: 10rem;
+}
+
+/*login*/
+.form-container-login{
+    height: 20vw;
+    margin: auto;
+    border: 1px solid #333;
+    width: 40%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+.login-form label {
+    color: #000;
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 10rem;
+}
+
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10rem;
+}
+
+.login-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.login-form input[type="button"]{
+    font-weight: 500;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Add transition for smooth effect */
+    float: right;
+    margin-right: 10rem;
+}
+.login-form input[type="button"]:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add this line for the shadow */
+}
+.login-form a{
+    text-decoration: none;
+    float: left;
+    margin-left: 10rem;
+}
+.login-form,.signup-form a:hover{
+    color:rgb(87, 87, 236) ;
+}
+.login-form,.signup-form a:active{
+    color: rgb(87, 87, 236);
+}
+
+.form-container-login a{
+    color: #000;
+}
+
+.form-container-login a:active{
+    color: #000;
+}
+.form-container-login a:visited{
+    color: #000;
+}
+
 @media only screen and (max-width: 768px) {
     .navbar {
       flex-direction: column;

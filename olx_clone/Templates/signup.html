@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock title %}
+{% block content %}
+<div class="form-container">
+    <div class="heading">
+        <h4>User Signup</h4>
+    </div>
+    <div class="signup-form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label><br>
+            <input type="text" name="email" placeholder="Enter your username" pattern="[A-Z],[a-z]"><br>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" placeholder="example@gmail.com"><br>
+            <label for="password1">Password</label><br>
+            <input type="password" name="password1" palceholder="Enter your password"><br>
+            <label for="password2">Confirm Password</label><br>
+            <input type="password" name="password2" placeholder="Retype your password"><br>
+            <input type="button" value="Signup">
+            <a class="signup-link" href="{% url 'User:login' %}">Alredy have an account</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+

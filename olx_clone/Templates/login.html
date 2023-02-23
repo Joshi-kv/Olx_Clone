@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+<div class="form-container-login "i>
+    <a href="{% url 'Home:index' %}"><i class="fa-sharp fa-solid fa-circle-xmark fa-2x" ></i></a>
+    <div class="heading">
+        <h4>User Login</h4>
+    </div>
+    <div class="login-form">
+        <form action="" method="post">
+            {% csrf_token %}
+        
+            <label for="username">Username</label><br>
+            <input type="text" name="email" placeholder="Enter your username" pattern="[A-Z],[a-z]"><br>
+            <label for="password1">Password</label><br>
+            <input type="password" name="password1" palceholder="Enter your password"><br>
+            <input type="button" value="Login">
+            <a class="signup-link" href="{% url 'User:signup' %}">Create an account</a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %} 
