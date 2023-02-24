@@ -2,19 +2,26 @@
 {% block title %}Login{% endblock title %}
 {% block content %}
 <div class="form-container-login "i>
-    <a href="{% url 'Home:index' %}"><i class="fa-sharp fa-solid fa-circle-xmark fa-2x" ></i></a>
+    <a href="{% url 'Home:home_page' %}"><i class="fa-sharp fa-solid fa-circle-xmark fa-2x" ></i></a>
     <div class="heading">
         <h4>User Login</h4>
     </div>
+    {% if messages %}
+    {% for i in messages %}
+    <div class="error">
+        <p>{{i}}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
     <div class="login-form">
         <form action="" method="post">
             {% csrf_token %}
         
             <label for="username">Username</label><br>
-            <input type="text" name="email" placeholder="Enter your username" pattern="[A-Z],[a-z]"><br>
+            <input type="text" name="username" placeholder="Enter your username" ><br>
             <label for="password1">Password</label><br>
-            <input type="password" name="password1" palceholder="Enter your password"><br>
-            <input type="button" value="Login">
+            <input type="password" name="password" palceholder="Enter your password"><br>
+            <button type="submit">Login</button>
             <a class="signup-link" href="{% url 'User:signup' %}">Create an account</a>
         </form>
     </div>

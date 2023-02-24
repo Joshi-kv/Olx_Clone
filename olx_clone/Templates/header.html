@@ -18,9 +18,23 @@
         <div >
             <h3 class="language">English</h3>
         </div>
+        {% if user.is_authenticated %}
+        <div class="login">
+            <div class="dropdown">
+                <h4 class="dropdown-btn">{{user.username}}&nbsp;<i class="fa-sharp fa-solid fa-caret-down"></i></h4>
+                <div class="dropdown-content">
+                    <ul id="dropdown-items">
+                        <li><a href="">Logout</a></li>
+                        <li><a href="">My Favourites</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% else %}
         <div>
             <h4 class="login"><a href="{% url 'User:login' %}" id="login">Login</a></h4>
         </div>
+        {% endif %}
         <div class="sell-div">
             <button class="sell-button">SELL</button>
         </div>

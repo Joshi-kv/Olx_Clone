@@ -7,6 +7,7 @@ html{
     padding: 0;
     margin: 0;
 }
+
 /* header */
 .navbar{
     top: 0;
@@ -228,17 +229,17 @@ h4 a:hover{
     margin-left: 10rem;
 }
 
-.signup-form button {
+/* .signup-form button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 
 
-.signup-form input[type="button"]{
+.signup-form button[type="submit"]{
     font-weight: 500;
     background-color: #4CAF50;
     color: white;
@@ -250,7 +251,7 @@ h4 a:hover{
     float: right;
     margin-right: 10rem;
 }
-.signup-form input[type="button"]:hover {
+.signup-form button[type="submit"]:hover {
     background-color: #3e8e41;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add this line for the shadow */
 }
@@ -262,7 +263,7 @@ h4 a:hover{
 
 /*login*/
 .form-container-login{
-    height: 20vw;
+    height: 25vw;
     margin: auto;
     border: 1px solid #333;
     width: 40%;
@@ -308,7 +309,7 @@ h4 a:hover{
 }
 
 
-.login-form input[type="button"]{
+.login-form button[type="submit"]{
     font-weight: 500;
     background-color: #4CAF50;
     color: white;
@@ -320,7 +321,7 @@ h4 a:hover{
     float: right;
     margin-right: 10rem;
 }
-.login-form input[type="button"]:hover {
+.login-form button[type="submit"]:hover {
     background-color: #3e8e41;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add this line for the shadow */
 }
@@ -336,15 +337,57 @@ h4 a:hover{
     color: rgb(87, 87, 236);
 }
 
-.form-container-login a{
+
+
+.signup-link,a:active{
+    color: rgb(87, 87, 236);
+}
+
+.error p{
+    margin-left: 15rem;
+    color: #f00;
+}
+
+.dropdown-btn {
+    display: inline-block;
+    margin-top: -40px;
+    cursor: pointer;
+}
+
+/* Dropdown menu styles */
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #fff;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-content li {
+    display: block;
+    padding: 10px 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Show the dropdown menu when the button is hovered over */
+.dropdown:hover .dropdown-content {
+    display: inline-block;
+    margin-left: 68%;
+    margin-top: 3.5rem;
+}
+
+.dropdown-content li,a{
+    list-style: none;
+    text-decoration: none;
+    font-size: medium;
+    font-weight: bold;
     color: #000;
 }
 
-.form-container-login a:active{
-    color: #000;
-}
-.form-container-login a:visited{
-    color: #000;
+.dropdown-content li:hover{
+    display: block;
+    background-color: #cacacaa5;
 }
 
 @media only screen and (max-width: 768px) {
