@@ -24,7 +24,7 @@
                 <h4 class="dropdown-btn">{{user.username}}&nbsp;<i class="fa-sharp fa-solid fa-caret-down"></i></h4>
                 <div class="dropdown-content">
                     <ul id="dropdown-items">
-                        <li><a href="">Logout</a></li>
+                        <li><a href="{% url 'User:logout' %}">Logout</a></li>
                         <li><a href="">My Favourites</a></li>
                     </ul>
                 </div>
@@ -35,11 +35,28 @@
             <h4 class="login"><a href="{% url 'User:login' %}" id="login">Login</a></h4>
         </div>
         {% endif %}
+        {% if user.is_authenticated %}
         <div class="sell-div">
-            <button class="sell-button">SELL</button>
+            <button class="sell-button"><a href="{% url 'Home:addproduct' %}">SELL</a></button>
         </div>
+        {% else %}
+        <div class="sell-div">
+            <button class="sell-button"><a href="{% url 'User:login' %}">SELL</a></button>
+        </div>
+        {% endif %}
             
     </div> 
     <div class="border"></div>
+    <div class="category-container" style="pading:10px;">
+        <div class="category-content">
+            <ul>
+                <li><a href="{% url 'Home:home_page' %}">All Category</li>
+                {% for i  in category %}
+                <li><a href="">{{i.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </header>
+
 
