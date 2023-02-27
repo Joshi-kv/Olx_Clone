@@ -1,19 +1,32 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
 from . models import *
+
+
 # Create your views here.
-def home_page(request):
-    category=Category.objects.all()
+
+#to show all products added by user
+def home_page(request,category_slug=None):
+    category_page=None
+    products=None
+    if category_slug!=None:
+        category_page=get_object_or_404(Category,slug=category_slug)
+        products=Product.objects.all().filter(category=category_page)
+    else:
+        products=Product.objects.all()
     context={
-        'category':category
+        'category':category_page,
+        'products':products
     }
     return render(request,'index.html',context)
+
 
 #function for add product
 def sell_product(request):
     categories=Category.objects.all()
     if request.method=='POST':
         name=request.POST.get('name')
-        category_id = request.POST.get('category')
+        category_id = request.POST.get('category') #to get category from dropdown
         category = Category.objects.get(id=category_id)
         price=request.POST.get('price')
         location=request.POST.get('location')

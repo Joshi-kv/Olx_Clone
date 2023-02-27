@@ -1,42 +1,48 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
+    {% if category %}{{category.name}}
+    {% else %}
     Olx Clone
+    {% endif %}
 {% endblock title %}
+
+
 {% block content %}
-<div class="row-heading">
-    <h3>Fresh Recommendations</h3>
-</div>
+{% if category %}
+
 <div class="card-container">
-    <div class="card">
-      <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon"></i></button>
-      <img class="card-image" src="{% static 'images/car.png' %}">
-      <h2>Card 1</h2>
-      <p>Some text here.</p>
-    </div>
-    <div class="card">
-      <img src="card2.jpg">
-      <h2>Card 2</h2>
-      <p>Some text here.</p>
-    </div>
-    <div class="card">
-      <img src="card3.jpg">
-      <h2>Card 3</h2>
-      <p>Some text here.</p>
-    </div>
-    <div class="card">
-        <img src="card3.jpg">
-        <h2>Card 3</h2>
-        <p>Some text here.</p>
-      </div>
-      <div class="card">
-        <img src="card3.jpg">
-        <h2>Card 3</h2>
-        <p>Some text here.</p>
-      </div>
+  {% for i in products %}
+  <div class="card">
+    <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon"></i></button>
+    <img class="card-image" src="{{i.image.url}}">
+    <h2>{{i.name}}</h2>
+    <p>₹{{i.price}}</p>
+  </div>
+  {% endfor %}
 </div>
 
-  
+
+{% else %}
+<div class="banner">
+  <img class="banner-image" src="{% static 'images/banner.png' %}" alt="banner">
+</div>
+<div >
+  <h3 class="row-heading">Fresh Recommendations</h3>
+</div>
+
+<div class="card-container">
+  {% for i in products %}
+  <div class="card">
+    <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon"></i></button>
+    <img class="card-image" src="{{i.image.url}}">
+    <h2>{{i.name}}</h2>
+    <p>₹{{i.price}}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{% endif %} 
 {% endblock content %}
 
 

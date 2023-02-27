@@ -10,7 +10,7 @@
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <label for="name">Product Name *</label><br>
-                <input type="text" name="name" placeholder="Enter product name"><br>
+                <input id="productname" type="text" name="name" placeholder="Enter product name"><br>
                 <label for="category">Select category *</label><br>
                 <select name="category" >
                     <option value="0">---Select Category---</option>
@@ -25,11 +25,11 @@
                 <label for="location">Location *</label><br>
                 <input type="text" name="location" placeholder="Enter your exact location"><br>
                 <label for="owner_name">Owner Name *</label><br>
-                <input type="text" name="owner_name" placeholder="Enter your name"><br>
+                <input type="text" name="owner_name" value="{{user.username}}"><br>
                 <label for="phone_no">Phone Number *</label><br>
-                <input type="text" name="phone_no" placeholder="Enter your mobile number"><br>
+                <input type="text" name="phone_no" placeholder="Enter your mobile number" ,maxlength="10",minlenth="10"><br>
                 <label for="description">Product Description *</label><br>
-                <input type="text" class="description" name="description" placeholder="Enter product description">
+                <input type="text" class="description" name="description" placeholder="Enter product description"><br>
                 <label for="image">Upload product image *</label><br>
                 <input type="file" name="image" ><br>
                 <button type="submit">POST</button>

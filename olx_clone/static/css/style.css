@@ -144,7 +144,7 @@ h4 a:hover{
 
 .co
 
-.row-heading{
+.row-heading {
     padding-left: 8.2em;
     margin-left: 7em;
 }
@@ -155,20 +155,23 @@ h4 a:hover{
     flex-wrap: wrap; /* allows the cards to wrap to the next line */
     max-width: 1200px; /* sets a maximum width for the card container */
     margin: 0 auto; /* centers the container on the page */
+    margin-bottom: 2rem;
   }
   
   .card {
     height: 18rem;
     width: calc(25% - 36px); /* sets the width of each card to 25% of the container width with 20px spacing between cards */
     margin: 1% 1%; /* adds spacing between cards */
-    border: 1px solid #ccc;
+    border: 1px solid #050505;
     padding: 5px;
     text-align: center;
   }
   .card-image{
-    width: 15rem;
+    width: 11rem;
     height: 10rem;
   }
+
+
 .fav-button{
     color: black;
     background-color:white ;
@@ -177,6 +180,7 @@ h4 a:hover{
     cursor: pointer;
 }
 .footerParentDiv {
+    
     width: 100vw;
     bottom: 0;
   }
@@ -248,14 +252,7 @@ h4 a:hover{
     margin-left: 10rem;
 }
 
-/* .signup-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-} */
+
 
 
 .signup-form button[type="submit"]{

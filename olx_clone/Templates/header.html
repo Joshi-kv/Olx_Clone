@@ -51,8 +51,8 @@
         <div class="category-content">
             <ul>
                 <li><a href="{% url 'Home:home_page' %}">All Category</li>
-                {% for i  in category %}
-                <li><a href="">{{i.name}}</a></li>
+                {% for i  in category_link %}
+                <li><a href="{{i.get_url}}">{{i.name}}</a></li>
                 {% endfor %}
             </ul>
         </div>
