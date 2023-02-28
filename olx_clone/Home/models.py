@@ -23,3 +23,6 @@ class Product(models.Model):
     phone_no=models.CharField(max_length=10)
     image=models.ImageField( upload_to='Images', height_field=None, width_field=None, max_length=None)
     description=models.TextField(max_length=400,blank=True)
+    
+    def get_url(self):
+        return reverse('Home:product_details',args=[self.category.slug,self.id])

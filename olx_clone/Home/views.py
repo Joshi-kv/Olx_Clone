@@ -41,3 +41,14 @@ def sell_product(request):
         'categories':categories
     }
     return render(request,'sell.html',context)
+
+#function to view product details
+def product_details(request,category_slug,product_id):
+    try:
+        products=Product.objects.get(category__slug=category_slug,id=product_id)
+    except Exception as e:
+        raise e
+    context={
+        'products':products
+    }
+    return render(request,'product.html',context)

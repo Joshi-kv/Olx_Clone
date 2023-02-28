@@ -35,7 +35,7 @@
   {% for i in products %}
   <div class="card">
     <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon"></i></button>
-    <img class="card-image" src="{{i.image.url}}">
+    <a href="{{i.get_url}}"><img class="card-image" src="{{i.image.url}}"></a>
     <h2>{{i.name}}</h2>
     <p>₹{{i.price}}</p>
   </div>

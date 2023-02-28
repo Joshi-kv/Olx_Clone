@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{products.name}}{% endblock title %}{{products.name}}
+{% block content %}
+<article>
+    <main >
+        <div class="product-container">
+            <img src="{{products.image.url}}" alt="{{products.name}}">
+        </div>
+        <div class="details">
+            <h3>Details</h3>
+            <p class="product-detail" >Brand <span class="product-name">{{products.name}}</span> </p>
+            <h3>Description</h3>
+            <p class="product-description">
+                {{products.description}}
+            </p>
+        </div>
+    </main>
+    <aside>
+        <div class="product-price">
+            <h2>₹ {{products.price}} <span><i class="fa-regular fa-heart fa-1x fav-icon" id="fav-icon"></i></span></h2>
+            <p>{{products.name}}</p>
+            <p>{{products.location}}</p>
+        </div>
+        <div class="chat">
+            <h2>{{products.owner_name}}</h2>
+            <button>Chat With Seller</button>
+        </div>
+        <div class="product-location">
+            <h2>Posted in</h2>
+            <p>{{products.location}}</p>
+        </div>
+    </aside>
+</article>
+{% endblock content %}
+
