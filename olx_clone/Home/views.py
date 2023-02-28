@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from . models import *
-
+from django.db.models import Q
 
 # Create your views here.
 
@@ -52,3 +52,17 @@ def product_details(request,category_slug,product_id):
         'products':products
     }
     return render(request,'product.html',context)
+
+def search(request):
+    products=None
+    query=None
+    if 'q' in request.GET:
+        query=request.GET.get('q')
+        products=Product.objects.all().filter(Q(location__icontains=query)|Q(name__icontains=query)|Q(description__icontains=query)|Q(category__name__icontains=query))
+        
+    context={
+        'query':query,
+        'products':products,
+    
+    }
+    return render(request,'search.html',context)

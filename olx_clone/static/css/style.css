@@ -39,6 +39,13 @@ html{
     bottom: 1rem;
 
 }
+.location-search button{
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 25%;
+    border: 0;
+    background-color: #fff;
+}
 .location{
     margin-top: -23px;
     width: 16em;
@@ -579,4 +586,9 @@ span .fav-icon{
 
 .product-location h2,p{
     margin-left: 2rem;
+}
+
+.search-result h3{
+    margin-left: 40%;
+    margin-top: 5rem;
 }

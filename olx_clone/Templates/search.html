@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{query}}{% endblock title %}
+{% block content %}
+
+{% if products %}
+<div class="search-result">
+    <h3>You have searched for : {{query}}</h3>
+</div>
+    <div class="card-container">
+        {% for i in products %}
+        <div class="card">
+          <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon"></i></button>
+          <a href="{{i.get_url}}"><img class="card-image" src="{{i.image.url}}"></a>
+          <h2>{{i.name}}</h2>
+          <p>₹{{i.price}}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+    {% else %}
+    <div class="search-result">
+        <h3>0 Results found</h3>
+    </div>
+{% endif %}
+
+{% endblock content %}
+

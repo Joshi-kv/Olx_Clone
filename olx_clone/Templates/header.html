@@ -5,12 +5,15 @@
             <a href="/"><img class="nav-logo" src="{% static 'images/navlogo.png' %}" alt="logo"></a>
         </div>
         <div class="location-search">
-            <form action="" method="get">
+            <form action="{% url 'Home:search' %}" method="get">
+                {% csrf_token %}
                 <input class="location" type="search" name="q" id="" placeholder="Search locality">
+                <button><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
             </form>
         </div>
         <div class="product-search">
-            <form action="" method="get">
+            {% csrf_token %}
+            <form action="{% url 'Home:search' %}" method="get">
                 <input class="product" type="search" name="q" id="" placeholder="Find car,property etc...">
                 <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
             </form>
