@@ -19,7 +19,13 @@
     </main>
     <aside>
         <div class="product-price">
-            <h2>₹ {{products.price}} <span><i class="fa-regular fa-heart fa-1x fav-icon" id="fav-icon"></i></span></h2>
+            <h2>₹ {{products.price}} 
+                
+            <form  class="" action="" method="get">
+                <button ><span><i class="fa-regular fa-heart fa-1x fav-icon" id="fav-icon"></i></span></button>
+            </form>
+            
+            </h2>
             <p>{{products.name}}</p>
             <p>{{products.location}}</p>
         </div>
@@ -33,5 +39,30 @@
         </div>
     </aside>
 </article>
+{% if user.is_authenticated %}
+<script >
+    document.getElementById('fav-icon').addEventListener('click', function() {
+      var icon = document.getElementById('fav-icon');
+      icon.classList.toggle('fa-regular');
+      icon.classList.toggle('fa-2x');
+      icon.classList.toggle('fa-sharp');
+      icon.classList.toggle('fa-solid');
+      icon.classList.toggle('fa-2x');
+      if (icon.classList.contains('fa-solid')) {
+        alert('Added to Favourites');
+      } else {
+        alert('Removed from Favourites');
+      }
+    });
+</script>
+{% else %}
+<script>
+    document.getElementById('fav-icon').addEventListener('click', function() {
+        var icon = document.getElementById('fav-icon');
+        alert('Please login')
+      });
+</script>
+{% endif %}
+
 {% endblock content %}
 

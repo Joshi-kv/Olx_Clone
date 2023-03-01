@@ -1,7 +1,9 @@
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from . models import *
 from django.db.models import Q
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -66,3 +68,5 @@ def search(request):
     
     }
     return render(request,'search.html',context)
+
+

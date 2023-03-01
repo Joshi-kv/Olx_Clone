@@ -190,7 +190,7 @@ h4 a:hover{
     color: black;
     background-color:white ;
     border: none;
-    margin-left: 12rem;
+    margin-left: 13rem;
     cursor: pointer;
 }
 .footerParentDiv {
@@ -548,6 +548,7 @@ aside{
 
 span .fav-icon{
     margin-left: 10rem;
+    z-index: 1;
 }
 
 .chat{
@@ -591,4 +592,13 @@ span .fav-icon{
 .search-result h3{
     margin-left: 40%;
     margin-top: 5rem;
+}
+
+.product-price  button{
+    color: black;
+    background-color:white ;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+    margin: -1rem 11rem;
 }
