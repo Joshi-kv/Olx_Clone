@@ -9,7 +9,7 @@
     <div class="card-container">
         {% for i in products %}
         <div class="card">
-          <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon"></i></button>
+          <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon-{{ i.id }}"></i></button>
           <a href="{{i.get_url}}"><img class="card-image" src="{{i.image.url}}"></a>
           <h2>{{i.name}}</h2>
           <p>₹{{i.price}}</p>
@@ -21,6 +21,41 @@
     <div class="search-result">
         <h3>0 Results found</h3>
     </div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<script >
+  {% for i in products %}
+    document.getElementById('fav-icon-{{ i.id }}').addEventListener('click', function() {
+      var icon = document.getElementById('fav-icon-{{ i.id }}');
+      icon.classList.toggle('fa-regular');
+      icon.classList.toggle('fa-2x');
+      icon.classList.toggle('fa-sharp');
+      icon.classList.toggle('fa-solid');
+      icon.classList.toggle('fa-2x');
+      if (icon.classList.contains('fa-solid')) {
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Added to Favourites',1);
+      } else {
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Removed from Favourites',1);
+      }
+      
+    });
+  {% endfor %}
+</script>
+  
+{% else %}
+<script >
+  {% for i in products %}
+    document.getElementById('fav-icon-{{ i.id }}').addEventListener('click', function() {
+      var icon = document.getElementById('fav-icon-{{ i.id }}');
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('please login',1);
+    });
+  {% endfor %}
+</script>
+  
 {% endif %}
 
 {% endblock content %}

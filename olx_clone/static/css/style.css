@@ -607,3 +607,44 @@ span .fav-icon{
     right: 10px;
   }
   
+  .no-favourites{
+   margin-top: 5rem;
+   margin-left: 40%;
+   margin-bottom: 5rem;
+  }
+  .no-favourites img{
+   height: 12rem;
+   margin-left: 2rem;
+  }
+
+  .no-favourites h3{
+    color:rgb(0 47 52 / 64%);
+    
+  }
+  .no-favourites p{
+    color:rgb(0 47 52 / 64%);
+    text-align: start;
+  }
+  .no-favourites button{
+    cursor: pointer;
+    background-color: #fff;
+    border: 2px solid black;
+    height: 3.8rem;
+    width: 6rem;
+    margin-left: 3rem;
+    border-radius: 5px;
+    font-size: medium;
+    font-weight: bold;
+  }
+
+  .fav a{
+    color: #002f34;
+    position: absolute;
+    top:9rem;
+    left: 10rem;
+    border-bottom: 1px solid #788284;
+  }
+  .fav a:active{
+    color: #002f34;
+  }
+

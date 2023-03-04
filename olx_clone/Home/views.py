@@ -69,4 +69,6 @@ def search(request):
     }
     return render(request,'search.html',context)
 
-
+# favourites
+def favourites(request):
+    return render(request,'favourites.html')

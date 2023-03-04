@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="fav">
+        <a href="{% url 'Home:favourites' %}"><h4>Favourites</h4></a>
+    </div>
+    <figure class="no-favourites">
+            <img src="{% static 'images/no-favorites.png' %}" alt="no-favorites.png">
+            <h3>You haven't liked any ads yet</h3>
+            <p>Like ads and share <br>  them with the world</p>
+            <a href="{% url 'Home:home_page' %}"><button>Discover</button></a>
+    </figure>
+
+{% endblock content %}
+
