@@ -4,7 +4,7 @@
 {% block title %}{{products.name}}{% endblock title %}
 {% block content %}
 <article>
-    <main >
+    <main>
         <div class="product-container">
             <img src="{{products.image.url}}" alt="{{products.name}}">
         </div>
@@ -21,9 +21,7 @@
         <div class="product-price">
             <h2>₹ {{products.price}} 
                 
-            <form  class="" action="" method="get">
-                <button ><span><i class="fa-regular fa-heart fa-1x fav-icon" id="fav-icon"></i></span></button>
-            </form>
+                <button><span><i class="fa-regular fa-heart fa-1x fav-icon" id="fav-icon"></i></span></button>
             
             </h2>
             <p>{{products.name}}</p>
@@ -39,30 +37,33 @@
         </div>
     </aside>
 </article>
+
 {% if user.is_authenticated %}
-<script >
-    document.getElementById('fav-icon').addEventListener('click', function() {
-      var icon = document.getElementById('fav-icon');
-      icon.classList.toggle('fa-regular');
-      icon.classList.toggle('fa-2x');
-      icon.classList.toggle('fa-sharp');
-      icon.classList.toggle('fa-solid');
-      icon.classList.toggle('fa-2x');
-      if (icon.classList.contains('fa-solid')) {
-        alert('Added to Favourites');
-      } else {
-        alert('Removed from Favourites');
-      }
-    });
+<script>
+  document.getElementById('fav-icon').addEventListener('click', function() {
+    var icon = document.getElementById('fav-icon');
+    icon.classList.toggle('fa-regular');
+    icon.classList.toggle('fa-2x');
+    icon.classList.toggle('fa-sharp');
+    icon.classList.toggle('fa-solid');
+    icon.classList.toggle('fa-2x');
+    if (icon.classList.contains('fa-solid')) {
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('Added to Favourites',1);
+    } else {
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('Removed from Favourites',1);
+    }
+  });
 </script>
 {% else %}
 <script>
-    document.getElementById('fav-icon').addEventListener('click', function() {
-        var icon = document.getElementById('fav-icon');
-        alert('Please login')
-      });
+  document.getElementById('fav-icon').addEventListener('click', function() {
+    var icon = document.getElementById('fav-icon');
+    alertify.set('notifier','position', 'top-right');
+    alertify.success('please login',1);
+  });
 </script>
 {% endif %}
 
 {% endblock content %}
-

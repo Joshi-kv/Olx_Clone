@@ -10,12 +10,23 @@
   
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://kit.fontawesome.com/1833d82ae9.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+  
+ 
+
 </head>
+
 <body>
+    
     {% include 'header.html' %}
     {% block content %}
     {% endblock content %}
     {% include 'footer.html' %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
 </body>
+
 </html>

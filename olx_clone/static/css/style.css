@@ -542,7 +542,6 @@ aside{
 
 .product-price h2,p{
     margin-left: 2rem;
-    text-align: justify;
     line-height: 1rem;
 }
 
@@ -602,3 +601,9 @@ span .fav-icon{
     cursor: pointer;
     margin: -1rem 11rem;
 }
+
+.alertify-notifier {
+    top: 10px;
+    right: 10px;
+  }
+  

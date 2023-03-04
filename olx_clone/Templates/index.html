@@ -56,9 +56,11 @@
       icon.classList.toggle('fa-solid');
       icon.classList.toggle('fa-2x');
       if (icon.classList.contains('fa-solid')) {
-        alert('Added to Favourites');
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Added to Favourites',1);
       } else {
-        alert('Removed from Favourites');
+        alertify.set('notifier','position', 'top-right');
+        alertify.success('Removed from Favourites',1);
       }
       
     });
@@ -70,7 +72,8 @@
   {% for i in products %}
     document.getElementById('fav-icon-{{ i.id }}').addEventListener('click', function() {
       var icon = document.getElementById('fav-icon-{{ i.id }}');
-      alert('Please login')
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('please login',1);
     });
   {% endfor %}
 </script>
