@@ -25,7 +25,16 @@ class Product(models.Model):
     image=models.ImageField( upload_to='Images', height_field=None, width_field=None, max_length=None)
     description=models.TextField(max_length=400,blank=True)
     
+    def __str__(self):
+        return '{}'.format(self.name)
+    
     def get_url(self):
         return reverse('Home:product_details',args=[self.category.slug,self.id])
     
 
+class FavoriteItem(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return '{}'.format(self.product.name)

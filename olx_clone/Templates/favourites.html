@@ -1,15 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="fav">
-        <a href="{% url 'Home:favourites' %}"><h4>Favourites</h4></a>
+
+{% if product %}
+<div class="card-container">
+    {% for i in product %}
+    <div class="card">
+      <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" data-product="{{i.id}}" id="fav-icon-{{ i.id }}"></i></button>
+  
+      <img class="card-image" src="{{i.product.image.url}}">
+      <h2>{{i.product.name}}</h2>
+      <p>₹{{i.product.price}}</p>
     </div>
-    <figure class="no-favourites">
-            <img src="{% static 'images/no-favorites.png' %}" alt="no-favorites.png">
-            <h3>You haven't liked any ads yet</h3>
-            <p>Like ads and share <br>  them with the world</p>
-            <a href="{% url 'Home:home_page' %}"><button>Discover</button></a>
-    </figure>
+    {% endfor %}
+  </div>
+  
+{% else %}
+<div class="fav">
+    <a href="{% url 'Home:favorites_list' %}"><h4>Favourites</h4></a>
+</div>
+<figure class="no-favourites">
+        <img src="{% static 'images/no-favorites.png' %}" alt="no-favorites.png">
+        <h3>You haven't liked any ads yet</h3>
+        <p>Like ads and share <br>  them with the world</p>
+        <a href="{% url 'Home:home_page' %}"><button>Discover</button></a>
+</figure>
+{% endif %}
 
 {% endblock content %}
 

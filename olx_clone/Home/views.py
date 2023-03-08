@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, redirect, render
 from . models import *
 from django.db.models import Q
@@ -69,6 +69,30 @@ def search(request):
     }
     return render(request,'search.html',context)
 
-# favourites
-def favourites(request):
-    return render(request,'favourites.html')
+#add items to favorite
+def add_favorite(request):
+    product_id = request.GET.get('product')
+    product=Product.objects.get(id=product_id)
+    data={}
+    try:
+        #if product already exist in favorite deleting it 
+        favorite_list=FavoriteItem.objects.get(product=product,user=request.user)
+        favorite_list.delete()
+        data={
+            'state':False
+        }
+    except FavoriteItem.DoesNotExist:
+        favorite_list=FavoriteItem.objects.create(product=product,user=request.user)
+        data={
+            'state':True
+        }
+
+    return JsonResponse(data)
+
+
+def favorites_list(request):
+    product=FavoriteItem.objects.filter(user=request.user)
+    context={
+        'product':product
+    }
+    return render(request,'favourites.html',context)
