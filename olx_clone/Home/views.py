@@ -90,9 +90,12 @@ def add_favorite(request):
     return JsonResponse(data)
 
 
+
+
 def favorites_list(request):
     product=FavoriteItem.objects.filter(user=request.user)
     context={
         'product':product
     }
     return render(request,'favourites.html',context)
+

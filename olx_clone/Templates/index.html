@@ -17,7 +17,7 @@
   <div class="card">
     <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" data-product="{{i.id}}" id="fav-icon-{{ i.id }}"></i></button>
 
-    <img class="card-image" src="{{i.image.url}}">
+    <a href="{{i.get_url}}"><img class="card-image" src="{{i.image.url}}"></a>
     <h2>{{i.name}}</h2>
     <p>₹{{i.price}}</p>
   </div>
@@ -62,20 +62,10 @@
         dataType:'json',
         success:function(res){
           if(res.state==true){
-            icon.classList.remove('fa-regular');
-            icon.classList.remove('fa-2x');
-            icon.classList.remove('fa-sharp');
-            icon.classList.add('fa-solid');
-            icon.classList.add('fa-2x');
             alertify.set('notifier','position', 'top-right');
             alertify.success('Added to Favourites',1);
 
           }else{
-            icon.classList.remove('fa-solid');
-            icon.classList.remove('fa-2x');
-            icon.classList.add('fa-regular');
-            icon.classList.add('fa-sharp');
-            icon.classList.add('fa-2x');
             alertify.set('notifier','position', 'top-right');
             alertify.success('Removed from Favourites',1);
           }

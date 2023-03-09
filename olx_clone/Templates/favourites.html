@@ -6,9 +6,9 @@
 <div class="card-container">
     {% for i in product %}
     <div class="card">
-      <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" data-product="{{i.id}}" id="fav-icon-{{ i.id }}"></i></button>
+      <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" onclick="removeFavorite('{{i.product.id}}', this)" data-product="{{i.product.id}}" id="fav-icon-{{ i.id }}"></i></button>
   
-      <img class="card-image" src="{{i.product.image.url}}">
+      <a href="{{i.product.get_url}}"><img class="card-image" src="{{i.product.image.url}}" alt="{{i.product.name}}"></a>
       <h2>{{i.product.name}}</h2>
       <p>₹{{i.product.price}}</p>
     </div>
@@ -26,6 +26,36 @@
         <a href="{% url 'Home:home_page' %}"><button>Discover</button></a>
 </figure>
 {% endif %}
+
+<script>
+  function removeFavorite(productId, icon) {
+    $.ajax({
+        url: "{% url 'Home:add_favorite' %}",
+        data: {
+            product: productId
+        },
+        dataType: 'json',
+        success: function (res) {
+          if (res.state == false) {
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('Removed from Favourites',1);
+            // Remove the card element from the page
+            var card = document.querySelector('.card');
+            card.remove();
+            // Check if there are any favorite cards left
+            var cards = document.querySelectorAll('.card');
+            if (cards.length == 0) {
+                // If no favorite cards left, show the "no-favorites" content
+                window.location.href = "{% url 'Home:home_page' %}";
+            }
+          }
+        }
+    });
+  }
+</script>
+
+
+
 
 {% endblock content %}
 

@@ -21,7 +21,7 @@
         <div class="product-price">
             <h2>₹ {{products.price}} 
                 
-                <button><span><i class="fa-regular fa-heart fa-1x fav-icon" id="fav-icon"></i></span></button>
+                <button><span><i class="fa-regular fa-heart fa-1x fav-icon" data-product="{{products.id}}"  id="fav-icon"></i></span></button>
             
             </h2>
             <p>{{products.name}}</p>
@@ -39,30 +39,40 @@
 </article>
 
 {% if user.is_authenticated %}
-<script>
-  document.getElementById('fav-icon').addEventListener('click', function() {
-    var icon = document.getElementById('fav-icon');
-    icon.classList.toggle('fa-regular');
-    icon.classList.toggle('fa-2x');
-    icon.classList.toggle('fa-sharp');
-    icon.classList.toggle('fa-solid');
-    icon.classList.toggle('fa-2x');
-    if (icon.classList.contains('fa-solid')) {
-      alertify.set('notifier','position', 'top-right');
-      alertify.success('Added to Favourites',1);
-    } else {
-      alertify.set('notifier','position', 'top-right');
-      alertify.success('Removed from Favourites',1);
-    }
-  });
+<script >
+
+    document.getElementById('fav-icon').addEventListener('click', function(e) {
+      e.preventDefault()
+      var product_id=$(this).attr('data-product')
+      var icon=document.getElementById('fav-icon')
+      //ajax
+      $.ajax({
+        url:"{% url 'Home:add_favorite' %}",
+        data:{
+          product:product_id
+        },
+        dataType:'json',
+        success:function(res){
+          if(res.state==true){
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('Added to Favourites',1);
+
+          }else{
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('Removed from Favourites',1);
+          }
+        }
+      })
+      
+    });
 </script>
 {% else %}
-<script>
-  document.getElementById('fav-icon').addEventListener('click', function() {
-    var icon = document.getElementById('fav-icon');
-    alertify.set('notifier','position', 'top-right');
-    alertify.success('please login',1);
-  });
+<script >
+    document.getElementById('fav-icon').addEventListener('click', function() {
+      var icon = document.getElementById('fav-icon');
+      alertify.set('notifier','position', 'top-right');
+      alertify.success('please login',1);
+    });
 </script>
 {% endif %}
 
