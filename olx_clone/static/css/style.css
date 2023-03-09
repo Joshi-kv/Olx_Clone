@@ -648,3 +648,18 @@ span .fav-icon{
     color: #002f34;
   }
 
+.chat-container{
+    position: relative;
+
+}
+
+.chat-container img{
+    width: 30vw;
+    margin-left: 300px;
+}
+
+figure h3{
+    position: absolute;
+    top: 10rem;
+    left:50%;
+}

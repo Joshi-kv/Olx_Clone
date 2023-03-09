@@ -99,3 +99,5 @@ def favorites_list(request):
     }
     return render(request,'favourites.html',context)
 
+def chat(request):
+    return render(request,'chat.html')
