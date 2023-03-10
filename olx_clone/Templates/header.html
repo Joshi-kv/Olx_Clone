@@ -4,50 +4,61 @@
         <div class="nav-logo">
             <a href="/"><img class="nav-logo" src="{% static 'images/navlogo.png' %}" alt="logo"></a>
         </div>
-        <div class="location-search">
-            <form action="{% url 'Home:search' %}" method="get">
-                {% csrf_token %}
-                <input class="location" type="search" name="q" id="" placeholder="Search locality">
-                <button><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
-            </form>
-        </div>
-        <div class="product-search">
-            {% csrf_token %}
-            <form action="{% url 'Home:search' %}" method="get">
-                <input class="product" type="search" name="q" id="" placeholder="Find car,property etc...">
-                <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
-            </form>
-        </div>
-        <div >
-            <h3 class="language">English</h3>
-        </div>
-        {% if user.is_authenticated %}
-        <div class="login">
-            <div class="dropdown">
-                <h4 class="dropdown-btn">{{user.username}}&nbsp;<i class="fa-sharp fa-solid fa-caret-down"></i></h4>
-                <div class="dropdown-content">
-                    <ul id="dropdown-items">
-                        <li><a href="{% url 'User:logout' %}">Logout</a></li>
-                        <li><a href="{% url 'Home:favorites_list' %}">My Favourites</a></li>
-                    </ul>
+        <ul>
+            <li>
+                <div class="location-search">
+                    <form action="{% url 'Home:search' %}" method="get">
+                        {% csrf_token %}
+                        <input class="location" type="search" name="q" id="" placeholder="Search locality">
+                        <button><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
+                    </form>
                 </div>
-            </div>
-        </div>
-        {% else %}
-        <div>
-            <h4 class="login"><a href="{% url 'User:login' %}" id="login">Login</a></h4>
-        </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <div class="sell-div">
-            <button class="sell-button"><a href="{% url 'Home:addproduct' %}">SELL</a></button>
-        </div>
-        {% else %}
-        <div class="sell-div">
-            <button class="sell-button"><a href="{% url 'User:login' %}">SELL</a></button>
-        </div>
-        {% endif %}
-            
+            </li>
+            <li>
+                <div class="product-search">
+                    {% csrf_token %}
+                    <form action="{% url 'Home:search' %}" method="get">
+                        <input class="product" type="search" name="q" id="" placeholder="Find car,property etc...">
+                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
+                    </form>
+                </div>
+            </li>
+            <li>
+                <div >
+                    <h3 class="language">English</h3>
+                </div>
+            </li>
+            <li>
+                {% if user.is_authenticated %}
+                <div class="login">
+                    <div class="dropdown">
+                      <h4 class="dropdown-btn">{{user.username}} <i class="fa fa-caret-down"></i></h4>
+                      <div class="dropdown-content">
+                        <ul id="dropdown-items">
+                          <li><a href="{% url 'User:logout' %}">Logout</a></li><br>
+                          <li><a href="{% url 'Home:favorites_list' %}">My Favorites</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                {% else %}
+                <div>
+                    <h4 class="login"><a href="{% url 'User:login' %}" id="login">Login</a></h4>
+                </div>
+                {% endif %}
+            </li>
+            <li>
+                {% if user.is_authenticated %}
+                <div class="sell-div">
+                    <button class="sell-button"><a href="{% url 'Home:addproduct' %}">SELL</a></button>
+                </div>
+                {% else %}
+                <div class="sell-div">
+                    <button class="sell-button"><a href="{% url 'User:login' %}">SELL</a></button>
+                </div>
+                {% endif %}
+            </li>
+        </ul>       
     </div> 
     <div class="border"></div>
     <div class="category-container" style="pading:10px;">

@@ -9,7 +9,7 @@
     <div class="card-container">
         {% for i in products %}
         <div class="card">
-          <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" id="fav-icon-{{ i.id }}"></i></button>
+          <button class="fav-button" ><i class="fa-regular fa-heart fa-2x fav-icon" data-product="{{i.id}}" id="fav-icon-{{ i.id }}"></i></button>
           <a href="{{i.get_url}}"><img class="card-image" src="{{i.image.url}}"></a>
           <h2>{{i.name}}</h2>
           <p>₹{{i.price}}</p>
@@ -25,26 +25,34 @@
 
 {% if user.is_authenticated %}
 <script >
+
   {% for i in products %}
-    document.getElementById('fav-icon-{{ i.id }}').addEventListener('click', function() {
-      var icon = document.getElementById('fav-icon-{{ i.id }}');
-      icon.classList.toggle('fa-regular');
-      icon.classList.toggle('fa-2x');
-      icon.classList.toggle('fa-sharp');
-      icon.classList.toggle('fa-solid');
-      icon.classList.toggle('fa-2x');
-      if (icon.classList.contains('fa-solid')) {
-        alertify.set('notifier','position', 'top-right');
-        alertify.success('Added to Favourites',1);
-      } else {
-        alertify.set('notifier','position', 'top-right');
-        alertify.success('Removed from Favourites',1);
-      }
+    document.getElementById('fav-icon-{{ i.id }}').addEventListener('click', function(e) {
+      e.preventDefault()
+      var product_id=$(this).attr('data-product')
+      var icon=document.getElementById('fav-icon-{{ i.id }}')
+      //ajax
+      $.ajax({
+        url:"{% url 'Home:add_favorite' %}",
+        data:{
+          product:product_id
+        },
+        dataType:'json',
+        success:function(res){
+          if(res.state==true){
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('Added to Favourites',1);
+
+          }else{
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('Removed from Favourites',1);
+          }
+        }
+      })
       
     });
   {% endfor %}
 </script>
-  
 {% else %}
 <script >
   {% for i in products %}
@@ -55,7 +63,6 @@
     });
   {% endfor %}
 </script>
-  
 {% endif %}
 
 {% endblock content %}
