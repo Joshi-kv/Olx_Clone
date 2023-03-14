@@ -3,7 +3,6 @@ from . import views
 app_name='Home'
 urlpatterns = [
     path('',views.home_page,name='home_page'),
-    path('chat/',views.chat,name='chat'),
     path('add_favorite/',views.add_favorite,name='add_favorite'),
     path('favorites_list/',views.favorites_list,name='favorites_list'),
     path('<slug:category_slug>/',views.home_page,name='products_by_category'),
