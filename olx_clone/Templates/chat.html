@@ -6,12 +6,39 @@
 {% endblock title %}
 
 {% block content %}
-<main class="chat-container">
-    <figure>
-        <img src="{% static 'images/soon.jpg' %}" alt="" >
-        <h3>This option is not available .Will be available soon</h3>
-    </figure>
-</main>
+    <div class="chat-box-container">
+        <div class="inbox">
+            <h2>
+                
+                Inbox
+            
+                <div class="inbox-icon">
+                    <i class="fa-solid fa-search search-inbox search-inbox"></i>
+                    <i class="fa-solid fa-ellipsis-vertical menu-inbox "></i>
+                </div>                
+            </h2>
+            
+        </div>
+        <div class="chat-box">
+
+            <h2 class="owner-name">
+                <img class="product-image" src="{{product_image}}" alt="">
+                <span>{{owner_name}}</span>
+
+            </h2>
+            <div class="chatbox-icon">
+                <i class="fa-solid fa-phone"></i>
+                <i class="fa-solid fa-ellipsis-vertical menu-icon-chatbox"></i>   
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+               
+        </div>
+    </div>
+    <div class="chat-send-box">
+        <input type="text" placeholder=' Type a message'>
+        <i class="fa-solid fa-paperclip  clip-icon"></i>
+        <i class="fa-solid fa-microphone microphone-icon"></i>
+    </div>
 {% endblock content %}
 
 
