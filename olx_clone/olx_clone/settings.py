@@ -32,15 +32,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Home',
+    'User',
+    'Chat',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Home',
-    'User',
-    'Chat',
+
 ]
 
 MIDDLEWARE = [
@@ -77,7 +79,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'olx_clone.wsgi.application'
+# WSGI_APPLICATION = 'olx_clone.wsgi.application'
+ASGI_APPLICATION = 'olx_clone.asgi.application'
 
 
 # Database
