@@ -16,6 +16,9 @@
   </div>
   
 {% else %}
+<div class="adds">
+  <a id="my-adds" href="{% url 'Home:myadds' %}"><h4>My Adds</h4></a>
+</div>
 <div class="fav">
     <a href="{% url 'Home:favorites_list' %}"><h4>Favourites</h4></a>
 </div>
@@ -53,9 +56,6 @@
     });
   }
 </script>
-
-
-
 
 {% endblock content %}
 

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+    My Adds
+
+{% endblock title %}
+
+
+{% block content %}
+
+{% if products %}
+<div class="card-container">
+    {% for i in products %}
+    <div class="card">
+      <button class="fav-button" ><i class="fa-solid fa-trash fa-2x fav-icon" data-product="{{i.id}}" id="fav-icon-{{ i.id }}"></i></button>
+  
+      <a href="{{i.get_url}}"><img class="card-image" src="{{i.image.url}}"></a>
+      <h2>{{i.name}}</h2>
+      <p>₹{{i.price}}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+
+<div class="adds">
+    <a id="my-adds" href="{% url 'Home:myadds' %}"><h4>My Adds</h4></a>
+  </div>
+  <div class="fav">
+      <a href="{% url 'Home:favorites_list' %}"><h4>Favourites</h4></a>
+  </div>
+  <figure class="no-favourites">
+          <img src="{% static 'images/no-favorites.png' %}" alt="no-favorites.png">
+          <h3>You haven't added any products yet</h3>
+          <p>Like ads and share <br>  them with the world</p>
+          <a href="{% url 'Home:addproduct' %}"><button>Add Product</button></a>
+  </figure>
+
+{% endif %}
+
+{% if user.is_authenticated %}
+<script>
+  {% for i in products %}
+  document.getElementById('fav-icon-{{ i.id }}').addEventListener('click', function(e) {
+    e.preventDefault();
+    var product_id = $(this).attr('data-product');
+    var icon = document.getElementById('fav-icon-{{ i.id }}');
+    // confirm dialog
+    var confirm_delete = confirm('Are you sure you want to remove this item?');
+    if (confirm_delete) {
+      // ajax
+      $.ajax({
+        url: "{% url 'Home:remove_adds' %}",
+        method: 'POST',
+        data: {
+          product_id: product_id,
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+        },
+        dataType: 'json',
+        success: function(res) {
+          if (res.success) {
+            // Remove the card element from the page
+            document.querySelector('.card').remove();
+          } else {
+            alert(res.error);
+          }
+        }
+      });
+    }
+  });
+  {% endfor %}
+</script>
+{% endif %}
+
+{% endblock content %}
+
+
+
+

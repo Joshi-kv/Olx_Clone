@@ -28,9 +28,15 @@
             <p>{{products.location}}</p>
         </div>
         <div class="chat">
-            <h2>{{products.owner_name}}</h2>
-            <a href="{% url 'Chat:chat_page' %}?product_image={{products.image.url}}&owner_name={{products.owner_name}}"><button>Chat With Seller</button></a>
+          {% if request.user.username != products.owner_name %}
+          <h2>{{products.owner_name}}</h2>
+          <a href="{% url 'Chat:chat_page' %}?product_image={{products.image.url}}&owner_name={{products.owner_name}}"><button>Chat With Seller</button></a>
+          {% else %}
+          <h2>You are the owner</h2>
+          {% endif %}
         </div>
+        
+      
         <div class="product-location">
             <h2>Posted in</h2>
             <p>{{products.location}}</p>

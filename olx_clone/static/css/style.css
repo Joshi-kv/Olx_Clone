@@ -643,6 +643,16 @@ span .fav-icon{
   .fav a:active{
     color: #002f34;
   }
+  .adds a{
+    color: #002f34;
+    position: absolute;
+    top:9rem;
+    left: 5rem;
+    border-bottom: 1px solid #788284;
+  }
+  .adds a:active{
+    color: #002f34;
+  }
 .chat-box-container{
     display: flex;
     flex-direction: row;
@@ -766,9 +776,15 @@ span .fav-icon{
     position: absolute;
     left:90%;
     top:18rem;
+    cursor: pointer;
 }
 
-
+.sent-icon{
+    position:absolute;
+    left:85%;
+    top: 18rem;
+    cursor: pointer;
+}
 
 @media screen and (max-width:576px) {
     .navbar{
