@@ -10,17 +10,8 @@ class chatConsumer(AsyncWebsocketConsumer):
     #it is called when connection established
     async def websocket_connect(self, event):
         print("Connected", event)
-        await self.send({
-            'type': 'websocket.accept'
-        })
-        await self.send_data()
+        await self.accept()
 
-    async def send_data(self):
-        # send data over websocket connection
-        await self.send({
-            'type': 'websocket.send',
-            'text': 'Hello, world!'
-        })
     #it is called when message received
     async def websocket_receive(self,event):
         print("Recieved",event)

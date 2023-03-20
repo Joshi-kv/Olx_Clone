@@ -6,39 +6,60 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="chat-box-container">
-        <div class="inbox">
+    <div class="inbox-box-container">
+        <div class="inbox-display-header">
             <h2>
-                
                 Inbox
-            
+            </h2>
                 <div class="inbox-icon">
                     <i class="fa-solid fa-search search-inbox search-inbox"></i>
                     <i class="fa-solid fa-ellipsis-vertical menu-inbox "></i>
                 </div>                
-            </h2>
             
         </div>
-        <div class="chat-box">
-
-            <h2 class="owner-name">
-                <img class="product-image" src="{{product_image}}" alt="">
-                <span>{{owner_name}}</span>
-
-            </h2>
-            <div class="chatbox-icon">
-                <i class="fa-solid fa-phone"></i>
-                <i class="fa-solid fa-ellipsis-vertical menu-icon-chatbox"></i>   
-                <i class="fa-solid fa-xmark"></i>
+        <div class="user-list">
+           
+            <div class="user-msg-detail">
+                <ul>
+                    <img class='product-image' src="{{product.image.url}}" alt="">
+                    <li><h3><span>{{product.owner_name}}</span></h3>{{product.name}}&nbsp;₹{{product.price}}</li>
+                </ul>
             </div>
-               
+
         </div>
     </div>
-    <div class="chat-send-box">
-        <input type="text" placeholder=' Type a message'>
-        <i class="fa-solid fa-paperclip  clip-icon"></i>
-        <i class="fa-solid fa-microphone microphone-icon"></i>
-        <i class="fa-regular fa-paper-plane sent-icon"></i>
+    <div class="msg-container">
+        <div class="msg-container-header">
+            <img class ="product-image" src="{{product.image.url}}" alt="">
+            <span><h3>{{product.owner_name}}</h3></span>
+        </div>
+        <div class="chat-box">
+            <div class="productDetails">
+                <span >{{product.name}}</span>
+                <span >₹{{product.price}}</span>
+            </div>
+            <div class="msg-display">
+                <div class="date">
+                    <h4><span>{{day_name}}</span>,&nbsp;{{day}}&nbsp;{{month}}</h4>
+                </div>
+                <div class="received-msg">
+                   <span> Hello &nbsp; {{time}}</span>
+                </div>
+                <div class="sent-msg">
+                    <span>Hi &nbsp; {{time}}</span>
+                </div>
+            </div>
+            <div class="type-box">
+                <form action="">
+                    <i class="fa-sharp fa-solid fa-paperclip paperclip" ></i>
+                    <input type="text" name="msg" id="msg" placeholder="Type your message .....">
+                    <div class="sent-btn">
+                        <button type='Submit'><i class="fa-regular fa-paper-plane"></i></button>
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="{% static 'js/message.js' %}"></script>
 {% endblock content %}
