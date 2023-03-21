@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from Home.models import Product
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 now = datetime.now()
@@ -9,6 +10,8 @@ day = now.day
 month = now.strftime('%B')
 time =now.time
 
+
+@login_required(login_url='User:login')
 def chat_page(request,product_id):
     try:
         product = Product.objects.get(pk=product_id)
