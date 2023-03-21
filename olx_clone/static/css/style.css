@@ -783,6 +783,7 @@ span .fav-icon{
 .msg-display .received-msg{
     margin-left: 2rem;
     margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .date {
@@ -802,6 +803,8 @@ span .fav-icon{
 }
 
 .sent-msg {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     margin-left: 80%;
     padding: 1rem;
     width: fit-content;

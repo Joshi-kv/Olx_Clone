@@ -2,8 +2,11 @@ let loc=window.location
 let wsStart='ws://'
 
 let input_message = $('#message')
-let message_body = $('.msg_card_body')
+let message_body = $('.msg-display')
 let message_form = $('#message-form')
+const currentDate = new Date()
+const time = currentDate.toLocaleTimeString('en-US', { hour12: true });
+
 
 if(loc.protocol === 'htpps'){
     wsStart='wss://'
@@ -32,6 +35,11 @@ socket.onopen = async function(e){
 
 socket.onmessage = async function(e){
     console.log('onmessage',e);
+    let data = JSON.parse(e.data)
+    let message = data['message']
+    console.log(message);
+    newMessge(message)
+    
 
 }
 socket.onerror = async function(e){
@@ -39,4 +47,16 @@ socket.onerror = async function(e){
 }
 socket.onclose = async function(e){
     console.log('OnClose',e);
+}
+
+
+newMessge = (message) =>{
+    let messageElement = `
+
+    <div class="sent-msg">
+    <span>${message} &nbsp; ${time}  </span>
+    </div>
+
+    `
+     message_body.append($(messageElement))
 }
