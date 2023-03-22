@@ -11,9 +11,9 @@ class chatConsumer(AsyncWebsocketConsumer):
     #it is called when connection established
     async def websocket_connect(self, event):
         print("Connected", event)
-        user = self.scope['user']
+        user = self.scope['user'] #to get the user object from websocket scope
         print(user)
-        chat_room = f'user_chatroom_{user.id}'#creating a chat room using user id
+        chat_room = f'user_chatroom_{user.id}' #creating a chat room using user id
         self.chat_room = chat_room
         #adding channel to the group
         await self.channel_layer.group_add(
