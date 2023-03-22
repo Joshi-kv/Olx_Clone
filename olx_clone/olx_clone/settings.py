@@ -138,3 +138,15 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#channel layers is used to enable real time communication
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [('127.0.0.1', 6379)],
+        # }
+    }
+}

@@ -32,7 +32,8 @@
                 {% if user.is_authenticated %}
                 <div class="login">
                     <div class="dropdown">
-                      <h4 class="dropdown-btn">{{user.username}} <i class="fa fa-caret-down"></i></h4>
+                        <input type="hidden" id='logged-user-id' value='{{user.id}}'>
+                      <h4  class="dropdown-btn">{{user.username}} <i class="fa fa-caret-down"></i></h4>
                       <div class="dropdown-content">
                         <ul id="dropdown-items">
                           <li><a href="{% url 'User:logout' %}">Logout</a></li><br>

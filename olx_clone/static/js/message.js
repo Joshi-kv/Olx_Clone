@@ -7,6 +7,8 @@ let message_form = $('#message-form')
 const currentDate = new Date()
 const time = currentDate.toLocaleTimeString('en-US', { hour12: true });
 
+//fetching current logged user id
+const userId = $('#logged-user-id').val()
 
 if(loc.protocol === 'htpps'){
     wsStart='wss://'
@@ -23,8 +25,19 @@ socket.onopen = async function(e){
     message_form.submit(function(e){
         e.preventDefault()
         let message = input_message.val()
+        let send_by = userId 
+        let send_to
+        
+        if(userId == 3){
+            send_to = 4
+        }else{
+            send_to = 3
+        }
+
         let data = {
-            'message':message
+            'message':message,
+            'send_by':send_by,
+            'send_to':send_to
         }
         data = JSON.stringify(data)
         //sending msg to server
