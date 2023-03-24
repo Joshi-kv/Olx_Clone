@@ -395,7 +395,7 @@ h4 a:hover{
 /* Show the dropdown menu when the button is hovered over */
 .dropdown:hover .dropdown-content {
     display: block;
-    margin-left: 68%;
+    margin-left: 70%;
     margin-top: 3.8rem;
 }
 
@@ -839,6 +839,10 @@ span .fav-icon{
     background-color: white;
     border: none;
     margin-right: 2rem;
+}
+
+.chat-icon{
+    margin: .5rem;
 }
 
 @media screen and (max-width:576px) {

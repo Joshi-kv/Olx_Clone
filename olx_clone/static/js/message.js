@@ -50,8 +50,9 @@ socket.onmessage = async function(e){
     console.log('onmessage',e);
     let data = JSON.parse(e.data)
     let message = data['message']
+    let send_by_id = data['send_by']
     console.log(message);
-    newMessge(message)
+    newMessge(message,send_by_id)
     
 
 }
@@ -63,13 +64,28 @@ socket.onclose = async function(e){
 }
 
 
-newMessge = (message) =>{
-    let messageElement = `
+newMessge = (message,send_by_id) =>{
 
-    <div class="sent-msg">
-    <span>${message} &nbsp; ${time}  </span>
-    </div>
+    let messageElement;
+    if(send_by_id == userId){
+        messageElement = `
 
-    `
-     message_body.append($(messageElement))
+        <div class="sent-msg">
+        <span>${message} &nbsp; ${time}  </span>
+        </div>
+    
+        `
+         message_body.append($(messageElement))
+    }else{
+        messageElement = `
+
+        <div class="received-msg">
+        <span>${message} &nbsp; ${time}  </span>
+        </div>
+    
+        `
+         message_body.append($(messageElement))
+    }
+
+
 }
