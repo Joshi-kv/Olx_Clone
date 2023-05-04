@@ -71,7 +71,7 @@ def sell_product(request):
     context={
         'categories':categories
     }
-    return render(request,'sell.html',context)
+    return render(request,'sellproduct.html',context)
 
 #function to view product details
 def product_details(request,category_slug,product_id):

@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages,auth
+from . models import Profile
 # Create your views here.
 def signup(request):
     if request.method=='POST':
@@ -18,11 +19,14 @@ def signup(request):
             else:  
                 user=User.objects.create_user(username=username,email=email,password=password1)
                 user.save()
+                user_model = User.objects.get(username=username)
+                profile = Profile.objects.create(user=user_model)
+                profile.save()
                 return redirect('User:login')
         else :
             messages.error(request,'Password not matching')
             return redirect('User:signup')
-    return render(request,'signup.html')
+    return render(request,'register.html')
 def login(request):
     if request.method=='POST':
         username=request.POST['username']

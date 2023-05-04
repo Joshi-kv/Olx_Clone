@@ -70,11 +70,11 @@
             </li>
         </ul>       
     </div> 
-    <div class="border"></div>
+    <hr>
     <div class="category-container" style="pading:10px;">
         <div class="category-content">
             <ul>
-                <li><a href="{% url 'Home:home_page' %}">All Category</li>
+                <li><a href="{% url 'Home:home_page' %}">All Category</li></a>
                 {% for i  in category_link %}
                 <li><a href="{{i.get_url}}">{{i.name}}</a></li>
                 {% endfor %}
@@ -82,5 +82,4 @@
         </div>
     </div>
 </header>
-
 
