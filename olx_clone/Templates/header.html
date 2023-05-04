@@ -9,7 +9,7 @@
                 <div class="location-search">
                     <form action="{% url 'Home:search' %}" method="get">
                         {% csrf_token %}
-                        <input class="location" type="search" name="q" id="" placeholder="Search locality">
+                        <input class="location" type="search" name="q"  placeholder="Search locality">
                         <button><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
                     </form>
                 </div>
@@ -18,7 +18,7 @@
                 <div class="product-search">
                     {% csrf_token %}
                     <form action="{% url 'Home:search' %}" method="get">
-                        <input class="product" type="search" name="q" id="" placeholder="Find car,property etc...">
+                        <input class="product" type="search" name="q"  placeholder="Find car,property etc...">
                         <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
                     </form>
                 </div>
@@ -40,10 +40,14 @@
                         
                       <h4  class="dropdown-btn">{{user.username}} <i class="fa fa-caret-down"></i></h4>
                       <div class="dropdown-content">
-                        <ul id="dropdown-items">
-                          <li><a href="{% url 'User:logout' %}">Logout</a></li><br>
-                          <li><a href="{% url 'Home:favorites_list' %}">My Favorites</a></li>
-                        </ul>
+                        <div class="dropdown-items">
+                          <div class="item">
+                            <a href="{% url 'User:logout' %}">Logout</a>
+                          </div>
+                          <div class="item">
+                            <a href="{% url 'Home:favorites_list' %}">My Favorites</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
