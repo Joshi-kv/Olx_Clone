@@ -9,7 +9,7 @@
                 <div class="location-search">
                     <form action="{% url 'Home:search' %}" method="get">
                         {% csrf_token %}
-                        <input class="location" type="search" name="q" id="" placeholder="Search locality">
+                        <input class="location" type="search" name="q"  placeholder="Search locality">
                         <button><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
                     </form>
                 </div>
@@ -18,26 +18,36 @@
                 <div class="product-search">
                     {% csrf_token %}
                     <form action="{% url 'Home:search' %}" method="get">
-                        <input class="product" type="search" name="q" id="" placeholder="Find car,property etc...">
+                        <input class="product" type="search" name="q"  placeholder="Find car,property etc...">
                         <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-search "></i></button>
                     </form>
                 </div>
             </li>
             <li>
                 <div >
-                    <h3 class="language">English</h3>
+                    
+                    <h3 class="language">English 
+                        <span><a class='chat-icon' href="{% url 'Home:chat' %}"><i class="fa-regular fa-comment chat-icon"></i></a></span>
+                    </h3>
+                   
                 </div>
             </li>
             <li>
                 {% if user.is_authenticated %}
                 <div class="login">
                     <div class="dropdown">
-                      <h4 class="dropdown-btn">{{user.username}} <i class="fa fa-caret-down"></i></h4>
+                        <input type="hidden" id='logged-user-id' value='{{user.id}}'>
+                        
+                      <h4  class="dropdown-btn">{{user.username}} <i class="fa fa-caret-down"></i></h4>
                       <div class="dropdown-content">
-                        <ul id="dropdown-items">
-                          <li><a href="{% url 'User:logout' %}">Logout</a></li><br>
-                          <li><a href="{% url 'Home:favorites_list' %}">My Favorites</a></li>
-                        </ul>
+                        <div class="dropdown-items">
+                          <div class="item">
+                            <a href="{% url 'User:logout' %}">Logout</a>
+                          </div>
+                          <div class="item">
+                            <a href="{% url 'Home:favorites_list' %}">My Favorites</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -60,11 +70,11 @@
             </li>
         </ul>       
     </div> 
-    <div class="border"></div>
+    <hr>
     <div class="category-container" style="pading:10px;">
         <div class="category-content">
             <ul>
-                <li><a href="{% url 'Home:home_page' %}">All Category</li>
+                <li><a href="{% url 'Home:home_page' %}">All Category</li></a>
                 {% for i  in category_link %}
                 <li><a href="{{i.get_url}}">{{i.name}}</a></li>
                 {% endfor %}
@@ -72,5 +82,4 @@
         </div>
     </div>
 </header>
-
 

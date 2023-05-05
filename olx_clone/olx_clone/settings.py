@@ -32,14 +32,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Home',
+    'User',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Home',
-    'User',
+
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'olx_clone.wsgi.application'
+# WSGI_APPLICATION = 'olx_clone.wsgi.application'
+ASGI_APPLICATION = 'olx_clone.asgi.application'
 
 
 # Database
@@ -84,9 +86,11 @@ WSGI_APPLICATION = 'olx_clone.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'olxclone',
+        'USER': 'root',
+        'PASSWORD': '',
+    } 
 }
 
 
@@ -134,3 +138,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#channel layers is used to enable real time communication
+

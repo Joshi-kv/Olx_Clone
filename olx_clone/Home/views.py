@@ -1,26 +1,55 @@
-from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect, render
 from . models import *
 from django.db.models import Q
 from django.http import JsonResponse
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 #to show all products added by user
-def home_page(request,category_slug=None):
-    category_page=None
-    products=None
-    if category_slug!=None:
-        category_page=get_object_or_404(Category,slug=category_slug)
-        products=Product.objects.all().filter(category=category_page)
+def home_page(request, category_slug=None):
+    current_user = request.user
+    category_page = None
+    products = None
+
+    if category_slug:
+        category_page = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=category_page).exclude(owner_name=current_user)
     else:
-        products=Product.objects.all()
-    context={
-        'category':category_page,
-        'products':products
+        products = Product.objects.exclude(owner_name=current_user)
+
+    context = {
+        'category': category_page,
+        'products': products
     }
-    return render(request,'index.html',context)
+    return render(request, 'index.html', context)
+
+
+#to display items added by user
+def my_adds(request):
+    current_user = request.user
+    products = Product.objects.filter(owner_name=current_user)
+
+    context = {
+        'products': products
+    }
+    return render(request, 'myadds.html', context)
+
+#to remove added items
+def remove_adds(request):
+    if request.method == 'POST':
+        product_id = request.POST.get('product_id')
+        try:
+            product = Product.objects.get(id=product_id)
+            product.delete()
+            data = {'success': True, 'url': reverse('Home:home_page')}
+        except Product.DoesNotExist:
+            data = {'success': False, 'error': 'Product does not exist or you do not have permission to delete it.'}
+    else:
+        data = {'success': False, 'error': 'Invalid request method.'}
+
+    return JsonResponse(data)
 
 
 #function for add product
@@ -42,7 +71,7 @@ def sell_product(request):
     context={
         'categories':categories
     }
-    return render(request,'sell.html',context)
+    return render(request,'sellproduct.html',context)
 
 #function to view product details
 def product_details(request,category_slug,product_id):
@@ -50,8 +79,10 @@ def product_details(request,category_slug,product_id):
         products=Product.objects.get(category__slug=category_slug,id=product_id)
     except Exception as e:
         raise e
+    is_owner = (products.owner_name == request.user)
     context={
-        'products':products
+        'products':products,
+        'is_owner':is_owner
     }
     return render(request,'product.html',context)
 
@@ -91,7 +122,6 @@ def add_favorite(request):
 
 
 
-
 def favorites_list(request):
     product=FavoriteItem.objects.filter(user=request.user)
     context={
@@ -99,5 +129,7 @@ def favorites_list(request):
     }
     return render(request,'favourites.html',context)
 
+
+@login_required(login_url='User:login')
 def chat(request):
     return render(request,'chat.html')
