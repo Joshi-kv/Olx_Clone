@@ -614,7 +614,7 @@ span .fav-icon{
   }
   
   .no-favourites{
-   margin-top: 5rem;
+   margin-top: 10rem;
    margin-left: 40%;
    margin-bottom: 5rem;
   }
@@ -624,6 +624,8 @@ span .fav-icon{
   }
 
   .no-favourites h3{
+    margin-left: -9rem;
+    margin-top: 5rem;
     color:rgb(0 47 52 / 64%);
     
   }
@@ -646,6 +648,7 @@ span .fav-icon{
   .fav a{
     color: #002f34;
     position: absolute;
+    text-decoration: none;
     top:9rem;
     left: 10rem;
     border-bottom: 1px solid #788284;
@@ -656,6 +659,7 @@ span .fav-icon{
   .adds a{
     color: #002f34;
     position: absolute;
+    text-decoration: none;
     top:9rem;
     left: 5rem;
     border-bottom: 1px solid #788284;

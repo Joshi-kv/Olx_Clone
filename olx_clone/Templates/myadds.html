@@ -62,6 +62,7 @@
           if (res.success) {
             // Remove the card element from the page
             document.querySelector('.card').remove();
+            window.location.href = res.url
           } else {
             alert(res.error);
           }

@@ -43,7 +43,7 @@ def remove_adds(request):
         try:
             product = Product.objects.get(id=product_id)
             product.delete()
-            data = {'success': True}
+            data = {'success': True, 'url': reverse('Home:home_page')}
         except Product.DoesNotExist:
             data = {'success': False, 'error': 'Product does not exist or you do not have permission to delete it.'}
     else:
