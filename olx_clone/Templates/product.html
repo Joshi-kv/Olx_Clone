@@ -30,7 +30,7 @@
         <div class="chat">
           {% if request.user.username != products.owner_name %}
           <h2>{{products.owner_name}}</h2>
-          <a href="{% url 'Chat:chat_page' products.id %}"><button>Chat With Seller</button></a>
+          <a href="{% url 'Home:chat' %}"><button>Chat With Seller</button></a>
           {% else %}
           <h2>You are the owner</h2>
           {% endif %}

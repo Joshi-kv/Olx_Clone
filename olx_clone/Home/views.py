@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from . models import *
 from django.db.models import Q
 from django.http import JsonResponse
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -122,7 +122,6 @@ def add_favorite(request):
 
 
 
-
 def favorites_list(request):
     product=FavoriteItem.objects.filter(user=request.user)
     context={
@@ -130,3 +129,7 @@ def favorites_list(request):
     }
     return render(request,'favourites.html',context)
 
+
+@login_required(login_url='User:login')
+def chat(request):
+    return render(request,'chat.html')

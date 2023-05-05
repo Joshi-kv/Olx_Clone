@@ -34,8 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'Home',
     'User',
-    'Chat',
-    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
